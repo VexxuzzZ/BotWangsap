@@ -1,4 +1,4 @@
-// PouGanteng
+const cfonts = require('cfonts');
 console.clear();
 console.log('starting...');
 require('./settings/settings');
