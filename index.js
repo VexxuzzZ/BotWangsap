@@ -35,6 +35,7 @@ const FileType = require('file-type');
 const { Boom } = require('@hapi/boom');
 const NodeCache = require("node-cache");
 const PhoneNumber = require('awesome-phonenumber');
+const cfonts = require('cfonts')
 const msgRetryCounterCache = new NodeCache()
 const retryCache = new NodeCache({ stdTTL: 30, checkperiod: 20 })
 const sendCache  = new NodeCache({ stdTTL: 30, checkperiod: 20 })
@@ -74,8 +75,6 @@ rl.question(text, resolve)
 const yargs = require('yargs');
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
-
-const cfonts = require('cfonts');
 
 cfonts.say('VonzieXCrasher', 
 {
