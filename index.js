@@ -71,7 +71,7 @@ rl.question(text, resolve)
 })
 };
 
-const yargs = require('yargs/yargs');
+const yargs = require('yargs');
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 
