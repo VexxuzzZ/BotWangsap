@@ -75,13 +75,15 @@ const yargs = require('yargs');
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 
+const cfonts = require('cfonts');
+
 cfonts.say('VonzieXCrasher', 
 {
     font: 'block',
     align: 'left',
-    colors: ['#ef3550;', 'merah'],
+    colors: ['#ef3550', 'red'],
     background: 'transparent',
-    rawMode: false,
+    raw: false
 });
 async function clientstart() {
 const {
