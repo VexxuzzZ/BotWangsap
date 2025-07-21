@@ -1,4 +1,5 @@
 // PouGanteng
+const cfonts = require('cfonts')
 console.clear();
 console.log('starting...');
 require('./settings/settings');
@@ -35,7 +36,6 @@ const FileType = require('file-type');
 const { Boom } = require('@hapi/boom');
 const NodeCache = require("node-cache");
 const PhoneNumber = require('awesome-phonenumber');
-const cfonts = require('cfonts')
 const msgRetryCounterCache = new NodeCache()
 const retryCache = new NodeCache({ stdTTL: 30, checkperiod: 20 })
 const sendCache  = new NodeCache({ stdTTL: 30, checkperiod: 20 })
