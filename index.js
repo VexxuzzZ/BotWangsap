@@ -1,7 +1,13 @@
-const cfonts = require('cfonts');
+/*
+
+  -! Credits By RuzxxOffc
+  https://wa.me/6288980698613
+
+*/
+
 console.clear();
 console.log('starting...');
-require('./settings/settings');
+require('../setting/config');
 process.on("uncaughtException", console.error); 
 
 const {
@@ -38,7 +44,7 @@ const PhoneNumber = require('awesome-phonenumber');
 const msgRetryCounterCache = new NodeCache()
 const retryCache = new NodeCache({ stdTTL: 30, checkperiod: 20 })
 const sendCache  = new NodeCache({ stdTTL: 30, checkperiod: 20 })
-const { color } = require('./all/color');
+const { color } = require('./lib/color');
 const {
 smsg,
 sendGmail,
@@ -50,14 +56,14 @@ getSizeMedia,
 runtime,
 fetchJson,
 sleep 
-} = require('./all/myfunc');
+} = require('./lib/myfunction');
 
 const { 
 imageToWebp,
 videoToWebp,
 writeExifImg,
 writeExifVid 
-} = require('./all/converter')
+} = require('./lib/exif')
 
 const usePairingCode = true;
 
@@ -111,7 +117,7 @@ deviceListMetadata: {},
 return message;
 },
 version: (await (await fetch('https://raw.githubusercontent.com/WhiskeySockets/Baileys/master/src/Defaults/baileys-version.json')).json()).version,
-browser: ["Linux", "Chrome", "20.0.04"],
+browser: ["Ubuntu", "Chrome", "20.0.04"],
 logger: pino({
 level: 'fatal'
 }),
@@ -125,45 +131,9 @@ stream: 'store'
 });
 
 if (!conn.authState.creds.registered) {
-  const phoneNumber = await question(`
- ⡏⠉⠉⠉⠉⠉⠉⠋⠉⠉⠉⠉⠉⠉⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠙⠉⠉⠉⠹
-⡇⢸⣿⡟⠛⢿⣷ ⢸⣿⡟⠛⢿⣷⡄⢸⣿⡇ ⢸⣿⡇⢸⣿⡇ ⢸⣿⡇ 
-⡇⢸⣿⣧⣤⣾⠿ ⢸⣿⣇⣀⣸⡿⠃⢸⣿⡇ ⢸⣿⡇⢸⣿⣇⣀⣸⣿⡇ 
-⡇⢸⣿⡏⠉⢹⣿⡆⢸⣿⡟⠛⢻⣷⡄⢸⣿⡇ ⢸⣿⡇⢸⣿⡏⠉⢹⣿ 
-⡇⢸⣿⣧⣤⣼⡿⠃⢸⣿⡇ ⢸⣿⡇⠸⣿⣧⣤⣼⡿⠁⢸⣿⡇ ⢸⣿⡇ 
-⣇⣀⣀⣀⣀⣀⣀⣄⣀⣀⣀⣀⣀⣀⣀⣠⣀⡈⠉⣁⣀⣄⣀⣀⣀⣠⣀⣀⣀⣰
-  ⠛⠛⣿⣿⣿⣿⣿⡷⢶⣦⣶⣶⣤⣤⣤⣀   
-    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀ 
-    ⠉⠉⠉⠙⠻⣿⣿⠿⠿⠛⠛⠛⠻⣿⣿⣇ 
-   ⢤⣀⣀⣀  ⢸⣷⡄ ⣁⣀⣤⣴⣿⣿⣿⣆
-     ⠹⠏   ⣿⣧ ⠹⣿⣿⣿⣿⣿⡿⣿
-          ⠛⠿⠇⢀⣼⣿⣿⠛⢯⡿⡟
-           ⠦⠴⢿⢿⣿⡿⠷ ⣿ 
-        ⠙⣷⣶⣶⣤⣤⣤⣤⣤⣶⣦⠃ 
-        ⢐⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿  
-        ⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇  
-          ⠙⠻⢿⣿⣿⣿⣿⠟⠁
-            
-            
-            
-            
-            
-𝗜 𝗡 𝗙 𝗢 𝗥 𝗠 𝗔 𝗧 𝗜 𝗢 𝗡 • 𝗕 𝗢 𝗧 👻
-ᴅᴇᴠᴇʟᴏᴘᴇʀ : 𝑽𝒐𝒏𝒛𝒊𝒆𝑿𝑪𝒓𝒂𝒔𝒉𝒆𝒓✴️
-ᴠᴇʀsɪᴏɴ : 1.0
-ʏᴏᴜᴛᴜʙᴇ: @
-ᴛᴇʟᴇɢʀᴀᴍ: @
-
-𝙲𝚑𝚘𝚘𝚜𝚎 𝚢𝚘𝚞𝚛 𝚗𝚞𝚖𝚋𝚎𝚛 (𝟼𝟸𝚡𝚡𝚡𝚡): `);
-  const code = await conn.requestPairingCode(phoneNumber.trim());
-  const text = `nih kode nya lek: ${code}`;
-  let rainbowText = "";
-  const colors = ["red", "orange", "yellow", "green", "blue"];
-  for (let i = 0; i < text.length; i++) {
-    rainbowText += `<font color="${colors[i % colors.length]}">${text[i]}</font>`;
-  }
-  console.log(rainbowText);
-  // document.write(rainbowText); // Commented out karena document.write mungkin tidak berfungsi di environment Node.js
+const phoneNumber = await question('please enter your WhatsApp number, starting with 62:\n');
+const code = await conn.requestPairingCode(phoneNumber.trim())
+console.log(chalk.blue.bold(`your pairing code: ${code}`))
 }
 
 const store = makeInMemoryStore({
@@ -173,75 +143,22 @@ stream: 'store'
 })
 })
 
-store.bind(conn.ev)
-conn.ev.on('connection.update', async (update) => {
-const { connection, lastDisconnect } = update
-if (connection === 'close') {
-const reason = new Boom(lastDisconnect?.error)?.output.statusCode
-console.log(color(lastDisconnect.error, 'deeppink'))
-if (lastDisconnect.error == 'Error: Stream Errored (unknown)') {
-process.exit()
-} else if (reason === DisconnectReason.badSession) {
-console.log(color(`Bad Session File, Please Delete Session and Scan Again`))
-process.exit()
-} else if (reason === DisconnectReason.connectionClosed) {
-console.log(color('[SYSTEM]', 'white'), color('Connection closed, reconnecting...', 'deeppink'))
-process.exit()
-} else if (reason === DisconnectReason.connectionLost) {
-console.log(color('[SYSTEM]', 'white'), color('Connection lost, trying to reconnect', 'deeppink'))
-process.exit()
-} else if (reason === DisconnectReason.connectionReplaced) {
-console.log(color('Connection Replaced, Another New Session Opened, Please Close Current Session First'))
-conn.logout()
-} else if (reason === DisconnectReason.loggedOut) {
-console.log(color(`Device Logged Out, Please Scan Again And Run.`))
-conn.logout()
-} else if (reason === DisconnectReason.restartRequired) {
-console.log(color('Restart Required, Restarting...'))
-await startSesi()
-} else if (reason === DisconnectReason.timedOut) {
-console.log(color('Connection TimedOut, Reconnecting...'))
-startSesi()
-}
-} else if (connection === "connecting") {
-start(`1`, `Connecting...`)
-} else if (connection === "open") {
-success(`1`, `Tersambung`)
-conn.sendMessage(`62857734669112@s.whatsapp.net`, { text: `
- ⠛⠛⣿⣿⣿⣿⣿⡷⢶⣦⣶⣶⣤⣤⣤⣀   
-    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀ 
-    ⠉⠉⠉⠙⠻⣿⣿⠿⠿⠛⠛⠛⠻⣿⣿⣇ 
-   ⢤⣀⣀⣀  ⢸⣷⡄ ⣁⣀⣤⣴⣿⣿⣿⣆
-     ⠹⠏   ⣿⣧ ⠹⣿⣿⣿⣿⣿⡿⣿
-          ⠛⠿⠇⢀⣼⣿⣿⠛⢯⡿⡟
-           ⠦⠴⢿⢿⣿⡿⠷ ⣿ 
-        ⠙⣷⣶⣶⣤⣤⣤⣤⣤⣶⣦⠃ 
-        ⢐⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿  
-        ⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇  
-          ⠙⠻⢿⣿⣿⣿⣿⠟⠁
- VonzieXCrasher 𝙱𝚎𝚛𝚑𝚊𝚜𝚒𝚕 𝙲𝚘𝚗𝚗𝚎𝚌𝚝 𝚗𝚒𝚑 ✴️
- MINIMAL FOLLOW KALO MAU SETUJUI
- https://whatsapp.com/channel/0029Vb6KtdzG8l5M16Qpam3X
- tiktok: vonzie124`})
- if (autoJoin) {
-conn.groupAcceptInvite(codeInvite)
-}
-}
-})
-conn.ev.on('messages.upsert', async (chatUpdate) => {
+store.bind(conn.ev);
+
+conn.ev.on('messages.upsert', async chatUpdate => {
 try {
-m = chatUpdate.messages[0]
-if (!m.message) return
-m.message = (Object.keys(m.message)[0] === 'ephemeralMessage') ? m.message.ephemeralMessage.message : m.message
-if (m.key && m.key.remoteJid === 'status@broadcast') return conn.readMessages([m.key])
-if (!conn.public && !m.key.fromMe && chatUpdate.type === 'notify') return
-if (m.key.id.startsWith('BAE5') && m.key.id.length === 16) return
-m = func.smsg(conn, m, store)
-require("./RyuMa")(conn, m, store)
+let mek = chatUpdate.messages[0]
+if (!mek.message) return
+mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+if (mek.key && mek.key.remoteJid === 'status@broadcast') return
+ if (!conn.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
+let m = smsg(conn, mek, store)
+require("./system")(conn, m, chatUpdate, mek, store)
 } catch (err) {
-console.log(err)
+console.log(chalk.yellow.bold("[ ERROR ] system.js :\n") + chalk.redBright(util.format(err)))
 }
 })
+
 
 conn.decodeJid = (jid) => {
 if (!jid) return jid;
@@ -447,7 +364,7 @@ conn.public = global.status;
 conn.serializeM = (m) => smsg(client, m, store)
 
 conn.ev.on('connection.update', async (update) => {
-let { Connecting } = require("./all/connection/connect.js");
+let { Connecting } = require("./lib/connection/connect.js");
 Connecting({ update, conn, Boom, DisconnectReason, sleep, color, clientstart });
 })
 
