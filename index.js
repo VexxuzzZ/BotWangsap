@@ -1,5 +1,4 @@
 // PouGanteng
-const cfonts = require('cfonts')
 console.clear();
 console.log('starting...');
 require('./settings/settings');
@@ -76,14 +75,6 @@ const yargs = require('yargs');
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 
-cfonts.say('VonzieXCrasher', 
-{
-    font: 'block',
-    align: 'left',
-    colors: ['#ef3550', 'red'],
-    background: 'transparent',
-    raw: false
-});
 async function clientstart() {
 const {
 state,
