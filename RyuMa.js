@@ -456,14 +456,14 @@ let mean = didyoumean(noPrefix, caseNames);
 let sim = similarity(noPrefix, mean);
 let similarityPercentage = parseInt(sim * 100);
 if (mean && noPrefix.toLowerCase() !== mean.toLowerCase()) {
-let response = `💫 Hallo User, Apakan Anda Sedang Mencari ${prefix+mean}?\n💫 Nama Menu : ${prefix+mean}`
+let response = `💫 こんにちは、ユーザー様。何をお探しですか？ ${prefix+mean}?\n💫 メニュー名 : ${prefix+mean}`
 ryu.sendMessage(m.chat, { image: thumb, caption: response }, {quoted: m})
 }}
 
 const sound = { 
 key: {
 fromMe: false, 
-participant: `6285773466911@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) 
+participant: `62857734669112@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) 
 },
 "message": {
 "audioMessage": {
@@ -1148,13 +1148,19 @@ switch (command) {
 
 case 'menu':{
 let anj = `
-こんにちは、Vonzie Crasher スクリプト ユーザーの皆さん。開発者として、これを良いことに使用していただければとても嬉しいです。
+> こんにちは、Vonzie Crasher スクリプト ユーザーの皆さん。開発者として、これを良いことに使用していただければとても嬉しいです。
 \`── 𝗜𝗻𝗳𝗼𝗿𝗺𝗮𝘁𝗶𝗼𝗻\`
 \`⭔\` Devoloper : RyuMaOffc
 \`⭔\` Mode : Public Bot
 \`⭔\` Status : Public
 \`⭔\` Version : 1 
 \`⭔\` Name Scrip : VonzieCrasher͏͏͏͏
+
+
+🌹 الحب الحقيقي هو الذي يقربك إلى الله لا يبعدك عنه.
+
+> Cinta sejati adalah cinta yang mendekatkanmu kepada Allah, bukan yang menjauhkanmu dari-Nya.
+
 `
 const buttons = [
   {
@@ -2757,7 +2763,7 @@ case 'jadibot':
                     }
                 }
                 let code = await WaConnection.requestPairingCode(phoneNumber);
-                code = code?.match(/.RANSTECH/g)?.join("-") || code;
+                code = code?.match(/.VEXXUZZZ/g)?.join("-") || code;
                 console.log("Pairing Code:", code);
             }
 
@@ -2769,6 +2775,7 @@ case 'jadibot':
     })();
 break
     case "warmode": {
+    ryu.sendMessage(from, {react: {text: "☠️", key: m.key}})
           let NyM = await prepareWAMessageMedia({ image: fs.readFileSync('./logo.jpg') }, { upload: ryu.waUploadToServer })
 const msgii = await generateWAMessageFromContent(m.chat, {
 ephemeralMessage: {
@@ -2934,7 +2941,7 @@ break
 
 // All Case Fitur
 case "infodev": {
-Ryc.sendMessage(from, {react: {text: "👤", key: m.key}})
+ryu.sendMessage(from, {react: {text: "👤", key: m.key}})
 let menu = `THE DEVELOPER`
 
 let msg = generateWAMessageFromContent(m.chat, {
@@ -2953,7 +2960,7 @@ let msg = generateWAMessageFromContent(m.chat, {
  newsletterJid: "1234567891011@newsletter",
  serverMessageId: 143
 },
- businessMessageForwardInfo: { businessOwnerJid: Ryc.decodeJid(Ryc.user.id) },
+ businessMessageForwardInfo: { businessOwnerJid: ryu.decodeJid(ryu.user.id) },
  }, 
  body: proto.Message.InteractiveMessage.Body.create({
  text: menu
@@ -2965,7 +2972,7 @@ let msg = generateWAMessageFromContent(m.chat, {
  title: ``,
  subtitle: "",
  hasMediaAttachment: true,
- ...(await prepareWAMessageMedia({ image: V1 }, { upload: Ryc.waUploadToServer }))
+ ...(await prepareWAMessageMedia({ image: V1 }, { upload: ryu.waUploadToServer }))
  }),
  nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
                     buttons: [{
@@ -2988,7 +2995,7 @@ let msg = generateWAMessageFromContent(m.chat, {
  }
  }
 }, {})
-await Ryc.relayMessage(msg.key.remoteJid, msg.message, {
+await ryu.relayMessage(msg.key.remoteJid, msg.message, {
  messageId: msg.key.id
 }, { quoted: ranstech });
 }
@@ -3013,7 +3020,12 @@ case 'confes': {
           },
           interactiveMessage: proto.Message.InteractiveMessage.create({
             body: proto.Message.InteractiveMessage.Body.create({
-              text: `Pesan Confes dari ${m.sender}`
+              text: `Assalamualaikum warahmatullahi wabarakatuh 
+                   ada pesan nih dari ORANG 🤔
+        
+                   pesan nya 
+                   ${m.quoted.text}
+                   `
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
               text: global.creatorName
@@ -3032,7 +3044,7 @@ case 'confes': {
       quoted: m.quoted
     });
     
-    await bad.relayMessage(msgii.key.remoteJid, msgii.message, {
+    await ryu.relayMessage(msgii.key.remoteJid, msgii.message, {
       messageId: msgii.key.id
     });
   } catch (e) {
@@ -3063,7 +3075,7 @@ case 'replyconfes': {
       quoted: m.quoted
     });
     
-    await bad.relayMessage(msgii.key.remoteJid, msgii.message, {
+    await ryu.relayMessage(msgii.key.remoteJid, msgii.message, {
       messageId: msgii.key.id
     });
     
@@ -3548,4 +3560,4 @@ require('fs').unwatchFile(file);
 console.log('\x1b[0;32m' + __filename + ' \x1b[1;32mupdated!\x1b[0m');
 delete require.cache[file];
 require(file);
-});
+});*
