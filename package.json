@@ -17,7 +17,7 @@
         "@adiwajshing/keyed-db": "^0.2.4",
         "@colors/colors": "^1.5.0",
         "@hapi/boom": "^10.0.0",
-        "@whiskeysockets/baileys": "github:seiren-primrose/PL-Baileys-old",
+        "@whiskeysockets/baileys": "github:DilxzXD/Baileys",
         "awesome-phonenumber": "^2.70.0",
         "axios": "^0.24.0",
         "chalk": "^4.1.2",
