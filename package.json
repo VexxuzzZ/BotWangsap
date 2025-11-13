@@ -1,23 +1,14 @@
 {
-    "name": "VonzieCrasher",
-    "version": "0.0.0",
-    "description": "up",
-    "main": "index.js",
-    "type": "commonjs",
+name": "Kriszz Bot",
+    "version": "1.6",
+    "description": "@Rbcdepp",
+    "main": "Ryuma.js",
     "scripts": {
-        "start": "node index.js"
+        "start": "node Ryuma.js"
     },
-    "keywords": [
-        "whiskeysockets",
-        "multi-device"
-    ],
-    "author": "RyuMa",
-    "license": "MIT",
     "dependencies": {
-        "@adiwajshing/keyed-db": "^0.2.4",
-        "@colors/colors": "^1.5.0",
-        "@hapi/boom": "^10.0.0",
-        "@whiskeysockets/baileys": "github:DilxzXD/Baileys",
+        "@octokit/rest": "latest",
+        "@whiskeysockets/baileys": "github:seiren-primrose/PL-Baileys-Old",
         "awesome-phonenumber": "^2.70.0",
         "axios": "^0.24.0",
         "chalk": "^4.1.2",
